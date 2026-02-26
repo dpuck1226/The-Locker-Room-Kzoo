@@ -1,265 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Locker Room</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Locker Room</title>
 
-  <style>
+<style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #1a1a1a, #3a2d0b);
+        color: white;
+        scroll-behavior: smooth;
     }
 
-    header {
-      background: url('header.jpg') center/cover no-repeat;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 2px 2px 6px black;
-      font-size: 48px;
-      font-weight: bold;
-    }
-
+    /* Sticky Navigation */
     nav {
-      background-color: #4b2e0f;
-      padding: 15px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: black;
+        padding: 15px 0;
+        z-index: 1000;
+        border-bottom: 2px solid gold;
     }
 
     nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
+        color: gold;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
     }
 
     nav a:hover {
-      color: #d4af37;
+        color: white;
     }
 
+    /* Hero Section (from second website) */
+    .hero {
+        height: 350px;
+        background: url('https://dpuck1226.github.io/The-Locker-Room/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .hero h1 {
+        font-size: 60px;
+        color: gold;
+        text-shadow: 3px 3px 10px black;
+    }
+
+    /* Section Formatting */
     section {
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: auto;
     }
 
     h2 {
-      text-align: center;
-      color: #4b2e0f;
-      font-size: 32px;
-      margin-bottom: 20px;
+        color: gold;
+        border-bottom: 2px solid gold;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        font-size: 32px;
     }
 
-    .menu-section {
-      margin-bottom: 40px;
+    .item {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 15px;
+        margin-bottom: 15px;
+        border-left: 4px solid gold;
     }
 
-    .menu-section h3 {
-      color: #4b2e0f;
-      font-size: 26px;
-      margin-bottom: 10px;
+    .price {
+        float: right;
+        color: gold;
+        font-weight: bold;
     }
 
-    .menu-section ul {
-      list-style: none;
-      padding: 0;
-      font-size: 18px;
+    /* Order Form */
+    .order-box {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+        border: 2px solid gold;
     }
 
-    .menu-section li {
-      padding: 6px 0;
-      border-bottom: 1px solid #ddd;
+    #confirmation {
+        margin-top: 20px;
+        padding: 20px;
+        background: black;
+        border: 2px solid gold;
+        display: none;
     }
-
-    /* ORDER PAGE STYLING */
-    .order-page {
-      padding: 40px;
-      background: #f7f2e8;
-      border-radius: 10px;
-      margin-top: 40px;
-    }
-
-    .order-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 450px;
-      margin: auto;
-    }
-
-    .order-form input,
-    .order-form select,
-    .order-form textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    .submit-order {
-      background: #4b2e0f;
-      color: white;
-      padding: 14px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .submit-order:hover {
-      background: #6a3f14;
-    }
-
-    footer {
-      background-color: #4b2e0f;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <header>
-    THE LOCKER ROOM
-  </header>
-
-  <nav>
+<!-- Navigation -->
+<nav>
     <ul>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#drinks">Drinks</a></li>
-      <li><a href="#about">About Us</a></li>
-      <li><a href="#order-page" class="order-btn">Order Now</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#drinks">Drinks</a></li>
+        <li><a href="#order">Order Online</a></li>
+        <li><a href="#specials">March Specials</a></li>
+        <li><a href="#events">Weekly Events</a></li>
+        <li><a href="#hours">Hours</a></li>
     </ul>
-  </nav>
+</nav>
 
-  <!-- MENU SECTION -->
-  <section id="menu">
+<!-- Hero -->
+<div id="home" class="hero">
+    <h1>The Locker Room</h1>
+</div>
+
+<!-- About Us -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        Welcome to The Locker Room — Kalamazoo’s go‑to spot for great food, cold drinks,
+        and an unbeatable college‑town atmosphere. Whether you're here to watch the game,
+        grab a bite, or hang out with friends, we’ve got you covered.
+    </p>
+</section>
+
+<!-- Menu -->
+<section id="menu">
     <h2>Menu</h2>
 
-    <div class="menu-section">
-      <h3>Wings</h3>
-      <ul>
-        <li>6 Wings — $8.99</li>
-        <li>10 Wings — $12.99</li>
-        <li>20 Wings — $22.99</li>
-        <li>40 Wings — $39.99</li>
-      </ul>
-    </div>
+    <div class="item">Chicken Tenders <span class="price">$9.99</span></div>
+    <div class="item">Cheeseburger & Fries <span class="price">$11.99</span></div>
+    <div class="item">Pretzel Bites <span class="price">$6.99</span></div>
+    <div class="item">Wings (6pc) <span class="price">$8.99</span></div>
+</section>
 
-    <div class="menu-section">
-      <h3>Burgers & Sandwiches</h3>
-      <ul>
-        <li>Cheeseburger & Fries — $11.99</li>
-        <li>Chicken Tenders & Fries — $10.99</li>
-      </ul>
-    </div>
-
-    <div class="menu-section">
-      <h3>Appetizers</h3>
-      <ul>
-        <li>Nachos — $9.99</li>
-        <li>Pretzel Bites — $7.99</li>
-        <li>Fries — $4.99</li>
-        <li>Loaded Fries — $8.99</li>
-        <li>Mozzarella Sticks — $8.49</li>
-        <li>Onion Rings — $7.49</li>
-        <li>Chips & Queso — $6.99</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- DRINKS SECTION -->
-  <section id="drinks">
+<!-- Drinks -->
+<section id="drinks">
     <h2>Drinks</h2>
 
-    <div class="menu-section">
-      <ul>
-        <li>Well Drinks — $5.00</li>
-        <li>Call Drinks — $7.00</li>
-        <li>Premium Drinks — $9.00</li>
-        <li>Draft Beer — $4.50</li>
-        <li>Seltzers — $5.50</li>
-        <li>Shots — $4.00</li>
-        <li>Specialty Cocktails — $9.99</li>
-      </ul>
+    <div class="item">Draft Beer <span class="price">$4.00</span></div>
+    <div class="item">Seltzers <span class="price">$5.00</span></div>
+    <div class="item">Cocktails <span class="price">$7.00</span></div>
+</section>
+
+<!-- Order Online -->
+<section id="order">
+    <h2>Order Online</h2>
+
+    <div class="order-box">
+        <label>Enter Your Order:</label>
+        <textarea id="orderInput" rows="5" style="width:100%;"></textarea>
+
+        <button onclick="submitOrder()" style="margin-top:15px;padding:10px 20px;background:gold;color:black;font-weight:bold;border:none;">
+            Submit Order
+        </button>
     </div>
-  </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p style="text-align:center; max-width:700px; margin:auto;">
-      Welcome to The Locker Room — WMU’s favorite spot for wings, burgers, drinks, and good vibes.
-      We’re student‑friendly, affordable, and always ready for game day.
-    </p>
-  </section>
+    <div id="confirmation"></div>
+</section>
 
-  <!-- ORDER ONLINE PAGE -->
-  <section id="order-page" class="order-page">
-    <h2>Order Online for Pickup</h2>
-    <p style="text-align:center;">Choose your items, enter your info, and place your pickup order.</p>
+<!-- Specials -->
+<section id="specials">
+    <h2>March Specials</h2>
+    <p>• $2 off all appetizers every Monday</p>
+    <p>• $5 cocktails every Thursday</p>
+    <p>• Weekend bucket deals</p>
+</section>
 
-    <form class="order-form">
+<!-- Events -->
+<section id="events">
+    <h2>Weekly Events</h2>
+    <p>• Trivia Night — Wednesdays at 7 PM</p>
+    <p>• Karaoke — Fridays at 9 PM</p>
+    <p>• Game Day Specials every Saturday</p>
+</section>
 
-      <label for="customer-name">Name</label>
-      <input type="text" id="customer-name" placeholder="Your name" required>
+<!-- Hours -->
+<section id="hours">
+    <h2>Hours</h2>
+    <p>Monday–Thursday: 4 PM – 11 PM</p>
+    <p>Friday–Saturday: 4 PM – 1 AM</p>
+    <p>Sunday: Closed</p>
+</section>
 
-      <label for="customer-phone">Phone Number</label>
-      <input type="tel" id="customer-phone" placeholder="(555) 555-5555" required>
+<script>
+function submitOrder() {
+    const order = document.getElementById("orderInput").value;
 
-      <label for="customer-time">Pickup Time</label>
-      <input type="time" id="customer-time" required>
+    if (order.trim() === "") {
+        alert("Please enter your order before submitting.");
+        return;
+    }
 
-      <label for="order-items">Select Items</label>
-      <select id="order-items" multiple required>
-        <option>6 Wings — $8.99</option>
-        <option>10 Wings — $12.99</option>
-        <option>20 Wings — $22.99</option>
-        <option>40 Wings — $39.99</option>
-        <option>Cheeseburger & Fries — $11.99</option>
-        <option>Chicken Tenders & Fries — $10.99</option>
-        <option>Nachos — $9.99</option>
-        <option>Pretzel Bites — $7.99</option>
-        <option>Fries — $4.99</option>
-        <option>Loaded Fries — $8.99</option>
-        <option>Mozzarella Sticks — $8.49</option>
-        <option>Onion Rings — $7.49</option>
-        <option>Chips & Queso — $6.99</option>
-        <option>Well Drink — $5.00</option>
-        <option>Call Drink — $7.00</option>
-        <option>Premium Drink — $9.00</option>
-        <option>Draft Beer — $4.50</option>
-        <option>Seltzer — $5.50</option>
-        <option>Shot — $4.00</option>
-        <option>Specialty Cocktail — $9.99</option>
-      </select>
-
-      <label for="special-requests">Special Requests</label>
-      <textarea id="special-requests" placeholder="Extra ranch, no onions, etc."></textarea>
-
-      <button type="submit" class="submit-order">Submit Order</button>
-    </form>
-  </section>
-
-  <footer>
-    © 2026 The Locker Room — Kalamazoo, MI
-  </footer>
+    const box = document.getElementById("confirmation");
+    box.style.display = "block";
+    box.innerHTML = `
+        <h3 style="color:gold;">Thank you! Your order has been received.</h3>
+        <p>Show this screen at pickup.</p>
+        <pre style="color:white;">${order}</pre>
+    `;
+}
+</script>
 
 </body>
 </html>
