@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Locker Room</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: url('header.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 6px black;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #4b2e0f;
+      padding: 15px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    section {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4b2e0f;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .menu-section {
+      margin-bottom: 40px;
+    }
+
+    .menu-section h3 {
+      color: #4b2e0f;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .menu-section ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    .menu-section li {
+      padding: 6px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ORDER PAGE STYLING */
+    .order-page {
+      padding: 40px;
+      background: #f7f2e8;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 450px;
+      margin: auto;
+    }
+
+    .order-form input,
+    .order-form select,
+    .order-form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .submit-order {
+      background: #4b2e0f;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .submit-order:hover {
+      background: #6a3f14;
+    }
+
+    footer {
+      background-color: #4b2e0f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    THE LOCKER ROOM
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#drinks">Drinks</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#order-page" class="order-btn">Order Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- MENU SECTION -->
+  <section id="menu">
+    <h2>Menu</h2>
+
+    <div class="menu-section">
+      <h3>Wings</h3>
+      <ul>
+        <li>6 Wings — $8.99</li>
+        <li>10 Wings — $12.99</li>
+        <li>20 Wings — $22.99</li>
+        <li>40 Wings — $39.99</li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3>Burgers & Sandwiches</h3>
+      <ul>
+        <li>Cheeseburger & Fries — $11.99</li>
+        <li>Chicken Tenders & Fries — $10.99</li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3>Appetizers</h3>
+      <ul>
+        <li>Nachos — $9.99</li>
+        <li>Pretzel Bites — $7.99</li>
+        <li>Fries — $4.99</li>
+        <li>Loaded Fries — $8.99</li>
+        <li>Mozzarella Sticks — $8.49</li>
+        <li>Onion Rings — $7.49</li>
+        <li>Chips & Queso — $6.99</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DRINKS SECTION -->
+  <section id="drinks">
+    <h2>Drinks</h2>
+
+    <div class="menu-section">
+      <ul>
+        <li>Well Drinks — $5.00</li>
+        <li>Call Drinks — $7.00</li>
+        <li>Premium Drinks — $9.00</li>
+        <li>Draft Beer — $4.50</li>
+        <li>Seltzers — $5.50</li>
+        <li>Shots — $4.00</li>
+        <li>Specialty Cocktails — $9.99</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      Welcome to The Locker Room — WMU’s favorite spot for wings, burgers, drinks, and good vibes.
+      We’re student‑friendly, affordable, and always ready for game day.
+    </p>
+  </section>
+
+  <!-- ORDER ONLINE PAGE -->
+  <section id="order-page" class="order-page">
+    <h2>Order Online for Pickup</h2>
+    <p style="text-align:center;">Choose your items, enter your info, and place your pickup order.</p>
+
+    <form class="order-form">
+
+      <label for="customer-name">Name</label>
+      <input type="text" id="customer-name" placeholder="Your name" required>
+
+      <label for="customer-phone">Phone Number</label>
+      <input type="tel" id="customer-phone" placeholder="(555) 555-5555" required>
+
+      <label for="customer-time">Pickup Time</label>
+      <input type="time" id="customer-time" required>
+
+      <label for="order-items">Select Items</label>
+      <select id="order-items" multiple required>
+        <option>6 Wings — $8.99</option>
+        <option>10 Wings — $12.99</option>
+        <option>20 Wings — $22.99</option>
+        <option>40 Wings — $39.99</option>
+        <option>Cheeseburger & Fries — $11.99</option>
+        <option>Chicken Tenders & Fries — $10.99</option>
+        <option>Nachos — $9.99</option>
+        <option>Pretzel Bites — $7.99</option>
+        <option>Fries — $4.99</option>
+        <option>Loaded Fries — $8.99</option>
+        <option>Mozzarella Sticks — $8.49</option>
+        <option>Onion Rings — $7.49</option>
+        <option>Chips & Queso — $6.99</option>
+        <option>Well Drink — $5.00</option>
+        <option>Call Drink — $7.00</option>
+        <option>Premium Drink — $9.00</option>
+        <option>Draft Beer — $4.50</option>
+        <option>Seltzer — $5.50</option>
+        <option>Shot — $4.00</option>
+        <option>Specialty Cocktail — $9.99</option>
+      </select>
+
+      <label for="special-requests">Special Requests</label>
+      <textarea id="special-requests" placeholder="Extra ranch, no onions, etc."></textarea>
+
+      <button type="submit" class="submit-order">Submit Order</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 The Locker Room — Kalamazoo, MI
+  </footer>
+
+</body>
+</html>
