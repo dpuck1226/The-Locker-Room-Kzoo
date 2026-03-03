@@ -1,222 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Locker Room</title>
+<section id="order" style="padding:40px; background:#111; color:white;">
+  <h2 style="text-align:center; font-size:32px; margin-bottom:20px;">Order Now</h2>
+  <p style="text-align:center; margin-bottom:30px;">Select items to build a visual order. No submission required.</p>
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to bottom, #1a1a1a, #3a2d0b);
-        color: white;
-        scroll-behavior: smooth;
-    }
+  <div id="orderForm" style="max-width:700px; margin:auto;">
 
-    /* Sticky Navigation */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: black;
-        padding: 15px 0;
-        z-index: 1000;
-        border-bottom: 2px solid gold;
-    }
+    <h3>Burgers</h3>
+    <label>Classic Burger ($9.99)
+      <input type="number" min="0" value="0" data-price="9.99">
+    </label>
 
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 0;
-        padding: 0;
-    }
+    <h3>Pizzas</h3>
+    <label>Pepperoni Pizza ($13.99)
+      <input type="number" min="0" value="0" data-price="13.99">
+    </label>
+    <label>Cheese Pizza ($11.99)
+      <input type="number" min="0" value="0" data-price="11.99">
+    </label>
+    <label>Chicken Ranch Pizza ($14.99)
+      <input type="number" min="0" value="0" data-price="14.99">
+    </label>
 
-    nav a {
-        color: gold;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 18px;
-    }
+    <h3>Wings</h3>
+    <label>6ct ($7.99)
+      <input type="number" min="0" value="0" data-price="7.99">
+    </label>
+    <label>12ct ($13.99)
+      <input type="number" min="0" value="0" data-price="13.99">
+    </label>
+    <label>20ct ($18.99)
+      <input type="number" min="0" value="0" data-price="18.99">
+    </label>
+    <label>40ct ($34.99)
+      <input type="number" min="0" value="0" data-price="34.99">
+    </label>
 
-    nav a:hover {
-        color: white;
-    }
+    <h3>Appetizers</h3>
+    <label>Loaded Nachos ($9.99)
+      <input type="number" min="0" value="0" data-price="9.99">
+    </label>
+    <label>Pretzel Bites & Beer Cheese ($7.99)
+      <input type="number" min="0" value="0" data-price="7.99">
+    </label>
+    <label>Fried Pickles ($6.99)
+      <input type="number" min="0" value="0" data-price="6.99">
+    </label>
+    <label>Chips & Salsa ($4.99)
+      <input type="number" min="0" value="0" data-price="4.99">
+    </label>
+    <label>Chips & Guacamole ($6.99)
+      <input type="number" min="0" value="0" data-price="6.99">
+    </label>
 
-    /* Hero Section (from second website) */
-    .hero {
-        height: 350px;
-        background: url('https://dpuck1226.github.io/The-Locker-Room/images/hero-bg.jpg');
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding-top: 80px;
-    }
+    <h3>Drinks</h3>
+    <label>The Dirty Bronco ($9.00)
+      <input type="number" min="0" value="0" data-price="9.00">
+    </label>
+    <label>Brown & Gold Margarita ($10.00)
+      <input type="number" min="0" value="0" data-price="10.00">
+    </label>
+    <label>The Flaming Spur ($11.00)
+      <input type="number" min="0" value="0" data-price="11.00">
+    </label>
 
-    .hero h1 {
-        font-size: 60px;
-        color: gold;
-        text-shadow: 3px 3px 10px black;
-    }
+    <h3>Beer</h3>
+    <label>Budweiser ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Bud Light ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Coors Light ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Miller Lite ($4.50)
+      <input type="number" min="0" value="0" data-price="4.50">
+    </label>
+    <label>Michelob Ultra ($5.00)
+      <input type="number" min="0" value="0" data-price="5.00">
+    </label>
+    <label>Twisted Tea ($5.50)
+      <input type="number" min="0" value="0" data-price="5.50">
+    </label>
 
-    /* Section Formatting */
-    section {
-        padding: 80px 20px;
-        max-width: 900px;
-        margin: auto;
-    }
+    <h3>Liquor</h3>
+    <label>Shot ($6.00)
+      <input type="number" min="0" value="0" data-price="6.00">
+    </label>
+    <label>Double ($10.00)
+      <input type="number" min="0" value="0" data-price="10.00">
+    </label>
 
-    h2 {
-        color: gold;
-        border-bottom: 2px solid gold;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-        font-size: 32px;
-    }
+    <h3 style="margin-top:30px;">Total</h3>
+    <p id="totalDisplay" style="font-size:24px; font-weight:bold;">$0.00</p>
 
-    .item {
-        background: rgba(0, 0, 0, 0.4);
-        padding: 15px;
-        margin-bottom: 15px;
-        border-left: 4px solid gold;
-    }
+    <button type="button" style="padding:10px 20px; font-size:18px; cursor:pointer; background:#c9a227; border:none; color:black; margin-top:10px;">
+      Visual Only – No Submission
+    </button>
 
-    .price {
-        float: right;
-        color: gold;
-        font-weight: bold;
-    }
-
-    /* Order Form */
-    .order-box {
-        background: rgba(0, 0, 0, 0.5);
-        padding: 20px;
-        border: 2px solid gold;
-    }
-
-    #confirmation {
-        margin-top: 20px;
-        padding: 20px;
-        background: black;
-        border: 2px solid gold;
-        display: none;
-    }
-</style>
-</head>
-
-<body>
-
-<!-- Navigation -->
-<nav>
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#drinks">Drinks</a></li>
-        <li><a href="#order">Order Online</a></li>
-        <li><a href="#specials">March Specials</a></li>
-        <li><a href="#events">Weekly Events</a></li>
-        <li><a href="#hours">Hours</a></li>
-    </ul>
-</nav>
-
-<!-- Hero -->
-<div id="home" class="hero">
-    <h1>The Locker Room</h1>
-</div>
-
-<!-- About Us -->
-<section id="about">
-    <h2>About Us</h2>
-    <p>
-        Welcome to The Locker Room — Kalamazoo’s go‑to spot for great food, cold drinks,
-        and an unbeatable college‑town atmosphere. Whether you're here to watch the game,
-        grab a bite, or hang out with friends, we’ve got you covered.
-    </p>
-</section>
-
-<!-- Menu -->
-<section id="menu">
-    <h2>Menu</h2>
-
-    <div class="item">Chicken Tenders <span class="price">$9.99</span></div>
-    <div class="item">Cheeseburger & Fries <span class="price">$11.99</span></div>
-    <div class="item">Pretzel Bites <span class="price">$6.99</span></div>
-    <div class="item">Wings (6pc) <span class="price">$8.99</span></div>
-</section>
-
-<!-- Drinks -->
-<section id="drinks">
-    <h2>Drinks</h2>
-
-    <div class="item">Draft Beer <span class="price">$4.00</span></div>
-    <div class="item">Seltzers <span class="price">$5.00</span></div>
-    <div class="item">Cocktails <span class="price">$7.00</span></div>
-</section>
-
-<!-- Order Online -->
-<section id="order">
-    <h2>Order Online</h2>
-
-    <div class="order-box">
-        <label>Enter Your Order:</label>
-        <textarea id="orderInput" rows="5" style="width:100%;"></textarea>
-
-        <button onclick="submitOrder()" style="margin-top:15px;padding:10px 20px;background:gold;color:black;font-weight:bold;border:none;">
-            Submit Order
-        </button>
-    </div>
-
-    <div id="confirmation"></div>
-</section>
-
-<!-- Specials -->
-<section id="specials">
-    <h2>March Specials</h2>
-    <p>• $2 off all appetizers every Monday</p>
-    <p>• $5 cocktails every Thursday</p>
-    <p>• Weekend bucket deals</p>
-</section>
-
-<!-- Events -->
-<section id="events">
-    <h2>Weekly Events</h2>
-    <p>• Trivia Night — Wednesdays at 7 PM</p>
-    <p>• Karaoke — Fridays at 9 PM</p>
-    <p>• Game Day Specials every Saturday</p>
-</section>
-
-<!-- Hours -->
-<section id="hours">
-    <h2>Hours</h2>
-    <p>Monday–Thursday: 4 PM – 11 PM</p>
-    <p>Friday–Saturday: 4 PM – 1 AM</p>
-    <p>Sunday: Closed</p>
+  </div>
 </section>
 
 <script>
-function submitOrder() {
-    const order = document.getElementById("orderInput").value;
+  const inputs = document.querySelectorAll('#orderForm input[type="number"]');
+  const totalDisplay = document.getElementById('totalDisplay');
 
-    if (order.trim() === "") {
-        alert("Please enter your order before submitting.");
-        return;
-    }
+  function updateTotal() {
+    let total = 0;
+    inputs.forEach(input => {
+      const qty = parseFloat(input.value) || 0;
+      const price = parseFloat(input.dataset.price);
+      total += qty * price;
+    });
+    totalDisplay.textContent = '$' + total.toFixed(2);
+  }
 
-    const box = document.getElementById("confirmation");
-    box.style.display = "block";
-    box.innerHTML = `
-        <h3 style="color:gold;">Thank you! Your order has been received.</h3>
-        <p>Show this screen at pickup.</p>
-        <pre style="color:white;">${order}</pre>
-    `;
-}
+  inputs.forEach(input => input.addEventListener('input', updateTotal));
 </script>
-
-</body>
-</html>
