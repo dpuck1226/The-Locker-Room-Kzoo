@@ -1,118 +1,468 @@
-<section id="order" style="padding:40px; background:#111; color:white;">
-  <h2 style="text-align:center; font-size:32px; margin-bottom:20px;">Order Now</h2>
-  <p style="text-align:center; margin-bottom:30px;">Select items to build a visual order. No submission required.</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Locker Room — We Major in Gameday</title>
+<meta name="description" content="The Locker Room — downtown sports bar near the arena. Cheap food, good vibes, game on." />
 
-  <div id="orderForm" style="max-width:700px; margin:auto;">
+<style>
+/* ===========================
+   GLOBAL STYLES
+   =========================== */
+:root{
+  --gold:#c49a2a;
+  --brown:#2b1f12;
+  --bg:#0b0b0b;
+  --muted:#e6e6e6;
+  --accent:#e03b3b;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--muted);
+  background:linear-gradient(180deg,#071018 0%, #0b0b0b 100%);
+  line-height:1.4;
+}
+a{color:var(--gold);text-decoration:none}
 
-    <h3>Burgers</h3>
-    <label>Classic Burger ($9.99)
-      <input type="number" min="0" value="0" data-price="9.99">
-    </label>
+/* ===========================
+   HEADER
+   =========================== */
+.site-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+  background:linear-gradient(90deg,var(--brown),#111);
+  border-bottom:4px solid rgba(196,154,42,0.06);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;object-fit:contain}
+.slogan{color:var(--gold);margin:0;font-weight:700}
+.nav a{color:var(--muted);margin-left:14px;padding:6px 8px;border-radius:6px}
+.nav a:hover{background:rgba(255,255,255,0.05)}
 
-    <h3>Pizzas</h3>
-    <label>Pepperoni Pizza ($13.99)
-      <input type="number" min="0" value="0" data-price="13.99">
-    </label>
-    <label>Cheese Pizza ($11.99)
-      <input type="number" min="0" value="0" data-price="11.99">
-    </label>
-    <label>Chicken Ranch Pizza ($14.99)
-      <input type="number" min="0" value="0" data-price="14.99">
-    </label>
+/* ===========================
+   HERO
+   =========================== */
+.hero{padding:24px 12px}
+.hero-inner{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.hero-img{width:320px;height:180px;object-fit:cover;border-radius:8px}
+.hero-text{max-width:640px}
+.hero h2{color:var(--gold);margin:0 0 8px}
+.cta{display:inline-block;margin-top:12px;padding:10px 18px;background:var(--accent);color:#fff;border-radius:6px}
 
-    <h3>Wings</h3>
-    <label>6ct ($7.99)
-      <input type="number" min="0" value="0" data-price="7.99">
-    </label>
-    <label>12ct ($13.99)
-      <input type="number" min="0" value="0" data-price="13.99">
-    </label>
-    <label>20ct ($18.99)
-      <input type="number" min="0" value="0" data-price="18.99">
-    </label>
-    <label>40ct ($34.99)
-      <input type="number" min="0" value="0" data-price="34.99">
-    </label>
+/* ===========================
+   SECTIONS
+   =========================== */
+.menu,.events,.hours,.contact,.challenge,.order-page{
+  padding:20px;margin:8px 16px;background:rgba(255,255,255,0.02);border-radius:8px;
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{padding:12px;background:rgba(255,255,255,0.02);border-radius:6px}
 
-    <h3>Appetizers</h3>
-    <label>Loaded Nachos ($9.99)
-      <input type="number" min="0" value="0" data-price="9.99">
-    </label>
-    <label>Pretzel Bites & Beer Cheese ($7.99)
-      <input type="number" min="0" value="0" data-price="7.99">
-    </label>
-    <label>Fried Pickles ($6.99)
-      <input type="number" min="0" value="0" data-price="6.99">
-    </label>
-    <label>Chips & Salsa ($4.99)
-      <input type="number" min="0" value="0" data-price="4.99">
-    </label>
-    <label>Chips & Guacamole ($6.99)
-      <input type="number" min="0" value="0" data-price="6.99">
-    </label>
+/* ===========================
+   WING CHALLENGE
+   =========================== */
+.challenge-badge{
+  display:inline-block;background:var(--gold);color:#111;padding:6px 10px;border-radius:20px;font-weight:700;
+}
+.challenge-tag{color:var(--gold);font-weight:700}
+.challenge-rules{padding-left:18px}
+.btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08)}
 
-    <h3>Drinks</h3>
-    <label>The Dirty Bronco ($9.00)
-      <input type="number" min="0" value="0" data-price="9.00">
-    </label>
-    <label>Brown & Gold Margarita ($10.00)
-      <input type="number" min="0" value="0" data-price="10.00">
-    </label>
-    <label>The Flaming Spur ($11.00)
-      <input type="number" min="0" value="0" data-price="11.00">
-    </label>
+/* Modal */
+.modal{position:fixed;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:50}
+.modal.hidden{display:none}
+.modal-content{background:#0f0f0f;padding:18px;border-radius:10px;max-width:420px;width:90%;text-align:center;position:relative}
+.modal-close{position:absolute;right:10px;top:8px;background:transparent;border:none;color:#fff;font-size:20px;cursor:pointer}
 
-    <h3>Beer</h3>
-    <label>Budweiser ($4.50)
-      <input type="number" min="0" value="0" data-price="4.50">
-    </label>
-    <label>Bud Light ($4.50)
-      <input type="number" min="0" value="0" data-price="4.50">
-    </label>
-    <label>Coors Light ($4.50)
-      <input type="number" min="0" value="0" data-price="4.50">
-    </label>
-    <label>Miller Lite ($4.50)
-      <input type="number" min="0" value="0" data-price="4.50">
-    </label>
-    <label>Michelob Ultra ($5.00)
-      <input type="number" min="0" value="0" data-price="5.00">
-    </label>
-    <label>Twisted Tea ($5.50)
-      <input type="number" min="0" value="0" data-price="5.50">
-    </label>
+/* ===========================
+   ORDER NOW
+   =========================== */
+.order-layout{display:flex;gap:18px;align-items:flex-start;padding:12px}
+.menu-column{flex:1;max-width:720px}
+.cart-column{width:320px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.menu-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.menu-item.special{background:linear-gradient(90deg,rgba(196,154,42,0.06),transparent)}
+.add-btn{background:var(--gold);color:#111;padding:6px 10px;border-radius:6px;border:none;cursor:pointer}
+.cart-items{min-height:120px}
+.cart-row{display:flex;justify-content:space-between;padding:6px 0}
+.checkout input, .checkout select{
+  width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted)
+}
 
-    <h3>Liquor</h3>
-    <label>Shot ($6.00)
-      <input type="number" min="0" value="0" data-price="6.00">
-    </label>
-    <label>Double ($10.00)
-      <input type="number" min="0" value="0" data-price="10.00">
-    </label>
+/* ===========================
+   FOOTER
+   =========================== */
+.site-footer{text-align:center;padding:12px;color:#888}
 
-    <h3 style="margin-top:30px;">Total</h3>
-    <p id="totalDisplay" style="font-size:24px; font-weight:bold;">$0.00</p>
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media(max-width:900px){
+  .order-layout{flex-direction:column}
+  .cart-column{width:100%}
+}
+@media(max-width:600px){
+  .site-header{flex-direction:column;gap:8px}
+  .nav{display:flex;gap:8px;flex-wrap:wrap}
+  .hero-inner{flex-direction:column}
+  .hero-img{width:100%;height:200px}
+}
+</style>
+</head>
 
-    <button type="button" style="padding:10px 20px; font-size:18px; cursor:pointer; background:#c9a227; border:none; color:black; margin-top:10px;">
-      Visual Only – No Submission
-    </button>
+<body>
+
+<!-- ===========================
+     HEADER
+     =========================== -->
+<header class="site-header">
+  <div class="brand">
+    <img src="assets/logo.png" class="logo" alt="">
+    <div>
+      <h1>The Locker Room</h1>
+      <p class="slogan">We Major in Gameday</p>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#menu">Menu</a>
+    <a href="#events">Events</a>
+    <a href="#wing-challenge">Wing Challenge</a>
+    <a href="#order">Order Now</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ===========================
+     HERO
+     =========================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <img src="assets/hero.jpg" class="hero-img" alt="">
+    <div class="hero-text">
+      <h2>Cheap Food. Good Vibes. Game On.</h2>
+      <p>Downtown near the new arena — your go-to spot for WMU gameday energy.</p>
+      <a class="cta" href="#order">Order Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     MENU
+     =========================== -->
+<section id="menu" class="menu">
+  <h3>Menu Highlights</h3>
+
+  <div class="cards">
+
+    <div class="card">
+      <h4>Entrees</h4>
+      <ul>
+        <li>Burgers — $9.99</li>
+        <li>Pepperoni Pizza — $11.99</li>
+        <li>Cheese Pizza — $10.49</li>
+        <li>Chicken Ranch Pizza — $12.49</li>
+        <li>Wings — 6/$7.99 • 12/$13.99 • 20/$21.99 • 40 Challenge/$29.99</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>Appetizers</h4>
+      <ul>
+        <li>Loaded Nachos — $9.49</li>
+        <li>Pretzel Bites + Beer Cheese — $6.99</li>
+        <li>Fried Pickles — $6.49</li>
+        <li>Chips & Salsa — $4.99 • Chips & Guac — $6.99</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>Sides</h4>
+      <ul>
+        <li>Fries — $2.99</li>
+        <li>Loaded Fries — $6.49</li>
+        <li>Onion Rings — $4.99</li>
+        <li>Tater Tots — $3.49</li>
+        <li>Mac & Cheese — $4.99</li>
+        <li>Coleslaw — $2.49</li>
+        <li>Side Salad — $3.99</li>
+        <li>Potato Wedges — $3.99</li>
+        <li>Cornbread — $2.99</li>
+        <li>Extra Celery & Carrots — $1.99</li>
+        <li>Extra Dips — $0.75</li>
+      </ul>
+    </div>
 
   </div>
 </section>
 
-<script>
-  const inputs = document.querySelectorAll('#orderForm input[type="number"]');
-  const totalDisplay = document.getElementById('totalDisplay');
+<!-- ===========================
+     EVENTS
+     =========================== -->
+<section id="events" class="events">
+  <h3>Weekly Events & Promotions</h3>
+  <ul>
+    <li>Tequila Tuesday — 15% off tequila</li>
+    <li>Wasted Wednesday — 10% off drinks</li>
+    <li>Thirsty Thursday — 20% off drinks</li>
+    <li>Fun Friday — 10% off (15% during WMU games)</li>
+    <li>All Out Saturday — 20–25% off + BOGO shots</li>
+    <li>Reset Sunday — regular pricing</li>
+  </ul>
+</section>
 
-  function updateTotal() {
-    let total = 0;
-    inputs.forEach(input => {
-      const qty = parseFloat(input.value) || 0;
-      const price = parseFloat(input.dataset.price);
-      total += qty * price;
-    });
-    totalDisplay.textContent = '$' + total.toFixed(2);
+<!-- ===========================
+     WING CHALLENGE
+     =========================== -->
+<section id="wing-challenge" class="challenge">
+  <div class="challenge-badge">Wing Challenge</div>
+  <h3>The Locker Room Wing Challenge</h3>
+  <p class="challenge-tag">40 wings • 45 minutes • Finish celery & carrots • $29.99 entry</p>
+
+  <ul class="challenge-rules">
+    <li>One challenger. No sharing.</li>
+    <li>Choose up to 3 dips.</li>
+    <li>Finish wings + celery + carrots in 45 minutes.</li>
+    <li>Waiver required.</li>
+  </ul>
+
+  <button id="view-rules-btn" class="btn ghost">Open Timer</button>
+
+  <div id="challenge-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">×</button>
+      <h4>Wing Challenge Timer</h4>
+      <p>Time remaining: <span id="challenge-timer">45:00</span></p>
+      <button id="start-timer" class="btn">Start</button>
+      <button id="stop-timer" class="btn ghost">Stop</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================
+     ORDER NOW
+     =========================== -->
+<section id="order" class="order-page">
+  <h2>Order Now</h2>
+  <p>Pickup orders only. Ready in 15–25 minutes.</p>
+
+  <div class="order-layout">
+
+    <div class="menu-column">
+      <h3>Menu</h3>
+
+      <div class="menu-item" data-id="burger" data-price="9.99">
+        <div>Burger — $9.99</div>
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="menu-item" data-id="pepperoni" data-price="11.99">
+        <div>Pepperoni Pizza — $11.99</div>
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="menu-item special" data-id="wings-40" data-price="29.99">
+        <div>40‑Count Wing Challenge — $29.99</div>
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="menu-item" data-id="fries" data-price="2.99">
+        <div>Fries — $2.99</div>
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="menu-item" data-id="mac" data-price="4.99">
+        <div>Mac & Cheese — $4.99</div>
+        <button class="add-btn">Add</button>
+      </div>
+
+    </div>
+
+    <aside class="cart-column">
+      <h3>Your Order</h3>
+      <div id="cart-items" class="cart-items">
+        <p class="empty">Your cart is empty</p>
+      </div>
+
+      <div class="cart-summary">
+        <p><strong>Subtotal</strong> <span id="subtotal">$0.00</span></p>
+        <p><strong>Tax</strong> <span id="tax">$0.00</span></p>
+        <p><strong>Total</strong> <span id="total">$0.00</span></p>
+      </div>
+
+      <div class="checkout">
+        <label>Name<input id="cust-name" type="text"></label>
+        <label>Phone<input id="cust-phone" type="tel"></label>
+        <label>Pickup Time
+          <select id="pickup-time">
+            <option>ASAP</option>
+            <option>In 30 minutes</option>
+            <option>In 60 minutes</option>
+          </select>
+        </label>
+
+        <label><input type="checkbox" id="agree-waiver"> I agree to the Wing Challenge waiver</label>
+
+        <button id="place-order" class="btn">Place Order (Mock)</button>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ===========================
+     CONTACT
+     =========================== -->
+<section id="contact" class="contact">
+  <h3>Contact</h3>
+  <p>Location: Downtown near the new arena, Kalamazoo</p>
+  <p>Follow us: Instagram • TikTok</p>
+</section>
+
+<!-- ===========================
+     FOOTER
+     =========================== -->
+<footer class="site-footer">
+  <p>© <span id="year"></span> The Locker Room — We Major in Gameday</p>
+</footer>
+
+<!-- ===========================
+     JAVASCRIPT
+     =========================== -->
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ===========================
+   WING CHALLENGE TIMER
+   =========================== */
+const modal = document.getElementById('challenge-modal');
+const openBtn = document.getElementById('view-rules-btn');
+const closeBtn = document.getElementById('modal-close');
+const startBtn = document.getElementById('start-timer');
+const stopBtn = document.getElementById('stop-timer');
+const timerDisplay = document.getElementById('challenge-timer');
+
+let timer = null;
+let timeLeft = 45 * 60;
+
+function formatTime(sec){
+  const m = String(Math.floor(sec/60)).padStart(2,'0');
+  const s = String(sec%60).padStart(2,'0');
+  return m+":"+s;
+}
+
+openBtn.onclick = ()=> modal.classList.remove('hidden');
+closeBtn.onclick = ()=> modal.classList.add('hidden');
+
+startBtn.onclick = ()=>{
+  if(timer) return;
+  timeLeft = 45*60;
+  timerDisplay.textContent = formatTime(timeLeft);
+  timer = setInterval(()=>{
+    timeLeft--;
+    timerDisplay.textContent = formatTime(timeLeft);
+    if(timeLeft <= 0){
+      clearInterval(timer);
+      timer = null;
+      alert("Time's up!");
+    }
+  },1000);
+};
+
+stopBtn.onclick = ()=>{
+  clearInterval(timer);
+  timer = null;
+};
+
+/* ===========================
+   ORDER NOW CART
+   =========================== */
+const cart = {};
+const cartItemsEl = document.getElementById('cart-items');
+const subtotalEl = document.getElementById('subtotal');
+const taxEl = document.getElementById('tax');
+const totalEl = document.getElementById('total');
+
+function updateCart(){
+  cartItemsEl.innerHTML = '';
+  let subtotal = 0;
+
+  if(Object.keys(cart).length === 0){
+    cartItemsEl.innerHTML = '<p class="empty">Your cart is empty</p>';
   }
 
-  inputs.forEach(input => input.addEventListener('input', updateTotal));
-</script>
+  for(const id in cart){
+    const item = cart[id];
+    subtotal += item.price * item.qty;
+
+    const row = document.createElement('div');
+    row.className = 'cart-row';
+    row.innerHTML = `
+      <div>${item.qty}x ${item.name}</div>
+      <div>$${(item.price * item.qty).toFixed(2)}</div>
+    `;
+    cartItemsEl.appendChild(row);
+  }
+
+  const tax = subtotal * 0.07;
+  const total = subtotal + tax;
+
+  subtotalEl.textContent = "$" + subtotal.toFixed(2);
+  taxEl.textContent = "$" + tax.toFixed(2);
+  totalEl.textContent = "$" + total.toFixed(2);
+}
+
+document.querySelectorAll('.add-btn').forEach(btn=>{
+  btn.onclick = ()=>{
+    const itemEl = btn.closest('.menu-item');
+    const id = itemEl.dataset.id;
+    const price = parseFloat(itemEl.dataset.price);
+    const name = itemEl.textContent.trim().split("—")[0].trim();
+
+    if(cart[id]) cart[id].qty++;
+    else cart[id] = {nameAbsolutely — I’ve got you.  
+Your file cut off **mid‑JavaScript**, so if I continued from that point, the entire site would break.  
+So here’s what I’m going to do:
+
+### ✅ I will regenerate the **entire final single‑file website**  
+- One `index.html`  
+- All CSS inline  
+- All JS inline  
+- Fully scroll‑based  
+- Fully responsive  
+- Fully functional Wing Challenge timer  
+- Fully functional Order Now cart  
+- No missing code  
+- No cut‑offs  
+- No external files required  
+- Works instantly on GitHub Pages  
+
+### ⚠️ Before I generate it, I need ONE last detail  
+This determines how the Order Now cart behaves.
+
+---
+
+# ❓ **Do you want the Order Now cart to allow quantity editing?**  
+Choose **A** or **B**:
+
+### **A — Simple Cart (Add only, no quantity editing)**  
+- Every click adds 1  
+- No minus button  
+- Cleanest and most stable  
+- Easiest for customers  
+
+### **B — Full Cart (Add, Remove, +/– buttons)**  
+- Users can increase or decrease quantities  
+- More complex JS  
+- Slightly heavier code  
+- More like a real restaurant ordering system  
+
+---
+
+# ⭐ Which one do you want: **A or B**  
+Tell me, and I will immediately generate the **final, complete, perfect single‑file website** with **zero missing code**.
